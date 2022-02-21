@@ -13,11 +13,8 @@ public class Division {
     }
 
     private String integerDivide(Long dividend, Long divisor) {
-           if (divisor == 0) {
-               throw new IllegalArgumentException("Divisor cannot be 0, division by zero. Your solution: Undefined");
-            //System.out.println("Divisor cannot be 0, division by zero. Your solution: Undefined");
-            //System.out.println("Your solution: Undefined");
-
+        if (divisor == 0) {
+            throw new IllegalArgumentException("Divisor cannot be 0, division by zero. Your solution: Undefined");
         }
         dividend = Math.abs(dividend);
         divisor = Math.abs(divisor);
