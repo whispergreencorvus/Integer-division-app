@@ -16,41 +16,18 @@ class DivisionTest {
     }
 
     @Test
-    void divide_shouldReturnSolutionOnLongDividionwithoutCalculator_whenInputStringContains_1357_4() {
-        assertEquals("_1357│4\n"
-                + " 12  │---\n"
-                + " --  │339\n"
-                + " _15\n"
-                + "  12\n"
-                + "  --\n"
-                + "  _37\n"
-                + "   36\n"
-                + "   --\n"
-                + "    1\n"
-                + "", division.divide("1357", "4"));
+    void divide_shouldReturnSolutionOnLongDividionwithoutCalculator_whenInputStringContains_12345_13() {
+        assertEquals("_123nl 117nl ---nl  _64nl   52nl   --nl  _125nl   117nl   ---nl     8nl", division.divide("12345", "13"));
     }
 
     @Test
-    void divide_shouldReturnSimpleSolutionContainOneStringWithAnswerZero_whenInputStringContainDivisorIsGreaterThanDividend() {
-        assertEquals("10 / 11 = 0", division.divide("10", "11"));
+    void divide_shouldReturnSolutionOnLongDividionwithoutCalculator_whenInputStringContainsMaxLongValues_9223372036854775807_9223372036854775807() {
+        assertEquals("_9223372036854775807nl 9223372036854775807nl -------------------nl                   0nl",
+                division.divide("9223372036854775807", "9223372036854775807"));
     }
 
     @Test
-    void divide_shouldReturnSimpleSolutionContainOneStringWithAnswerZero_whenInputStringContainDividendEqualToZero() {
-        assertEquals("0 / 10 = 0", division.divide("0", "10"));
-    }
-
-    @Test
-    void divide_shouldReturnSolutionOnLongDividionwithoutCalculator_whenInputStringContainsMaxLongValues_150_3() {
-        assertEquals("_9223372036854775807│9223372036854775807\n"
-                + " 9223372036854775807│-\n"
-                + " -------------------│1\n"
-                + "                   0\n"
-                + "", division.divide("9223372036854775807", "9223372036854775807"));
-    }
-
-    @Test
-    void divide_houldGetIllegalArgumentException_whenInputStringContainDividendEqualToZero() {
+    void divide_shouldGetIllegalArgumentException_whenInputStringContainDividendEqualToZero() {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             division.divide("10", "0");
         });
