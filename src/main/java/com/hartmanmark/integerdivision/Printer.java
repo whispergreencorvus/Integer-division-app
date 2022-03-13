@@ -1,6 +1,6 @@
 package com.hartmanmark.integerdivision;
 
-public class Print {
+public class Printer {
 
     private StringBuilder result = new StringBuilder();
     private String quotient;

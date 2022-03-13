@@ -2,20 +2,14 @@ package com.hartmanmark.integerdivision;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class PrintTest {
-
-    private Print print;
-
-    @BeforeEach
-    void init() {
-        print = new Print();
-    }
-
+class PrinterTest {
+   
     @Test
     void divide_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_intermediateDivisionResult_quotien_dividend_divisor() {
+        Printer print = new Printer();
+        
         assertEquals("_12345│13\n"
                    + " 117  │---\n"
                    + " ---  │949\n"

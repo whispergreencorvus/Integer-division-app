@@ -1,29 +1,34 @@
 package com.hartmanmark.integerdivision;
 
-public class Division {
+import com.hartmanmark.inteherdivision.exception.DividendIsLessThanDivisorException;
+
+public class DivisionService {
 
     private StringBuilder result = new StringBuilder();
     private StringBuilder reminder = new StringBuilder();
     private StringBuilder quotient = new StringBuilder();
     private String quotientAsString;
 
-    public String divide(String enteredDividend, String enteredDivisor) {
+    public String divide(String enteredDividend, String enteredDivisor) throws DividendIsLessThanDivisorException {
         return integerDivide(enteredDividend, enteredDivisor);
     }
 
-    private void verify(Long dividend, Long divisor) {
+    private void verify(Long dividend, Long divisor) throws DividendIsLessThanDivisorException {
         if (divisor == 0) {
             throw new IllegalArgumentException("Divisor cannot be 0, division by zero. Your solution: Undefined");
         }
+        if (divisor == null || dividend == null) {
+            throw new IllegalArgumentException("null");
+        }
         if (dividend < divisor) {
-            System.out.println("Your solution: " + dividend + " / " + divisor + " = 0");
-            System.exit(0);
+            throw new DividendIsLessThanDivisorException("Your solution: " + dividend + " / " + divisor + " = 0");
         }
     }
 
-    private String integerDivide(String enteredDividend, String enteredDivisor) {
-        Long dividendAsLong = Long.parseLong(enteredDividend);
-        Long divisorAsLong = Long.parseLong(enteredDivisor);
+    private String integerDivide(String enteredDividend, String enteredDivisor)
+            throws DividendIsLessThanDivisorException {
+        Long dividendAsLong = new Long(enteredDividend);
+        Long divisorAsLong = new Long(enteredDivisor);
         dividendAsLong = Math.abs(dividendAsLong);
         divisorAsLong = Math.abs(divisorAsLong);
         verify(dividendAsLong, divisorAsLong);
@@ -43,7 +48,7 @@ public class Division {
                 String multiply = String.format("%" + (i + 2) + "d", multiplyResult);
                 result.append(multiply + "nl");
                 long difference = lastReminder.length() - calculateLengthOfDivisor(multiplyResult);
-                result.append(createSeparator(reminderNumber, difference) + "nl");
+                result.append(createSeparator(multiplyResult, difference) + "nl");
                 quotient.append(reminderNumber / divisorAsLong);
                 reminder.replace(0, reminder.length(), mod.toString());
                 reminderNumber = Long.parseLong(reminder.toString());
