@@ -1,6 +1,7 @@
 package com.hartmanmark.integerdivision;
 
 import com.hartmanmark.inteherdivision.exception.DividendIsLessThanDivisorException;
+import com.hartmanmark.inteherdivision.exception.DivisorIsZeroException;
 
 public class DivisionService {
 
@@ -9,13 +10,15 @@ public class DivisionService {
     private StringBuilder quotient = new StringBuilder();
     private String quotientAsString;
 
-    public String divide(String enteredDividend, String enteredDivisor) throws DividendIsLessThanDivisorException {
+    public String divide(String enteredDividend, String enteredDivisor)
+            throws DividendIsLessThanDivisorException, DivisorIsZeroException {
         return integerDivide(enteredDividend, enteredDivisor);
     }
 
-    private void verify(Long dividend, Long divisor) throws DividendIsLessThanDivisorException {
+    private void verify(Long dividend, Long divisor) throws DividendIsLessThanDivisorException, DivisorIsZeroException {
         if (divisor == 0) {
-            throw new IllegalArgumentException("Divisor cannot be 0, division by zero. Your solution: Undefined");
+            throw new DivisorIsZeroException(
+                    "Divisor cannot be 0, division by zero." + "\n" + "Your solution: Undefined");
         }
         if (divisor == null || dividend == null) {
             throw new IllegalArgumentException("null");
@@ -26,9 +29,9 @@ public class DivisionService {
     }
 
     private String integerDivide(String enteredDividend, String enteredDivisor)
-            throws DividendIsLessThanDivisorException {
-        Long dividendAsLong = Long.parseLong(enteredDividend);
-        Long divisorAsLong = new Long(enteredDivisor);
+            throws DividendIsLessThanDivisorException, DivisorIsZeroException {
+        long dividendAsLong = Long.parseLong(enteredDividend);
+        long divisorAsLong = Long.parseLong(enteredDivisor);
         dividendAsLong = Math.abs(dividendAsLong);
         divisorAsLong = Math.abs(divisorAsLong);
         verify(dividendAsLong, divisorAsLong);

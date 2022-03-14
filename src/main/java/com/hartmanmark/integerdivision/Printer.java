@@ -11,8 +11,8 @@ public class Printer {
         for (String i : arrayOfIntermediateDivisionResults) {
             result.append(i + "\n");
         }
-        Long dividendAsLong = Long.parseLong(dividend);
-        Long divisorAsLong = Long.parseLong(divisor);
+        long dividendAsLong = Long.parseLong(dividend);
+        long divisorAsLong = Long.parseLong(divisor);
         modifyResultToView(dividendAsLong, divisorAsLong);
         return result.toString();
     }
