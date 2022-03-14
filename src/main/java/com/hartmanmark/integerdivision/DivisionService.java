@@ -27,7 +27,7 @@ public class DivisionService {
 
     private String integerDivide(String enteredDividend, String enteredDivisor)
             throws DividendIsLessThanDivisorException {
-        Long dividendAsLong = new Long(enteredDividend);
+        Long dividendAsLong = Long.parseLong(enteredDividend);
         Long divisorAsLong = new Long(enteredDivisor);
         dividendAsLong = Math.abs(dividendAsLong);
         divisorAsLong = Math.abs(divisorAsLong);

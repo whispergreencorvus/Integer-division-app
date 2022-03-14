@@ -17,30 +17,24 @@ public class Main {
             enteredDividend = scanner.nextLine();
             if (enteredDividend.equals("exit")) {
                 System.out.println("Bye bye");
-                System.exit(0);
+                scanner.close();
+                break;
             }
             System.out.print("Enter your divisor: ");
             enteredDivisor = scanner.nextLine();
-            if (enteredDivisor.equals("exit")) {
-                System.out.println("Bye bye");
-                System.exit(0);
+            if (!DivisionUtils.isNumeric(enteredDividend) || !DivisionUtils.isNumeric(enteredDivisor)) {
+                throw new IllegalArgumentException("The input have to me a number");
             }
-            if (enteredDividend.matches("\\d+") && enteredDivisor.matches("\\d+")) {
-                break;
-            } else if (!enteredDividend.matches("\\d+") || !enteredDivisor.matches("\\d+")) {
-                System.out.println(
-                        "Incorrect input dividend or divisor. Input data must be number. Try again. For output write [exit]");
-            }
-        }
-        scanner.close();
-        DivisionService division = new DivisionService();
-        try {
-            intermediateDivisionResults = division.divide(enteredDividend, enteredDivisor);
-            Printer print = new Printer();
-            System.out.println("Your solution: " + "\n" + print.print(intermediateDivisionResults,
+
+            DivisionService division = new DivisionService();
+            try {
+                intermediateDivisionResults = division.divide(enteredDividend, enteredDivisor);
+                Printer print = new Printer();
+                System.out.println("Your solution: " + "\n" + print.print(intermediateDivisionResults,
                     division.getQuotient(), enteredDividend, enteredDivisor));
-        } catch (DividendIsLessThanDivisorException e) {
-            System.out.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+               throw  new DividendIsLessThanDivisorException("Dividend is less than divisor");
+            }
         }
     }
 }
