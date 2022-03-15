@@ -7,10 +7,11 @@ import com.hartmanmark.inteherdivision.exception.DivisorIsZeroException;
 
 public class Main {
 
+    @SuppressWarnings("resource")
     public static void main(String[] args) throws DividendIsLessThanDivisorException, DivisorIsZeroException {
         Scanner scanner = new Scanner(System.in);
-        String enteredDividend = null;
-        String enteredDivisor = null;
+        String enteredDividend;
+        String enteredDivisor;
         System.out.println("Welcome to simple integer division application. For output input [exit]");
         while (true) {
             System.out.print("Enter your dividend: ");
@@ -22,19 +23,18 @@ public class Main {
             }
             System.out.print("Enter your divisor: ");
             enteredDivisor = scanner.nextLine();
+            if (!DivisionUtils.isNumeric(enteredDividend) || !DivisionUtils.isNumeric(enteredDivisor)) {
+                throw new IllegalArgumentException("The input have to me a number");
+            }
             if (enteredDividend.matches("\\d+") && enteredDivisor.matches("\\d+")) {
                 try {
                     Printer print = new Printer();
-                    DivisionService division = new DivisionService();
-                    System.out.println(
-                            "Your solution: " + "\n" + print.print(division.divide(enteredDividend, enteredDivisor),
-                                    division.getQuotient(), enteredDividend, enteredDivisor));
+                    System.out.println("Your solution: " + "\n" + print.print(enteredDividend, enteredDivisor));
                 } catch (DividendIsLessThanDivisorException e) {
                     System.out.println(e.getMessage());
                 } catch (DivisorIsZeroException e) {
                     System.out.println(e.getMessage());
                 }
-
             } else if (!enteredDividend.matches("\\d+") || !enteredDivisor.matches("\\d+")) {
                 System.out.println(
                         "Incorrect input dividend or divisor. Input data must be number. Try again. For output write [exit]");

@@ -1,13 +1,17 @@
 package com.hartmanmark.integerdivision;
 
+import com.hartmanmark.inteherdivision.exception.DividendIsLessThanDivisorException;
+import com.hartmanmark.inteherdivision.exception.DivisorIsZeroException;
+
 public class Printer {
 
     private StringBuilder result = new StringBuilder();
     private String quotient;
 
-    public String print(String intermediateDivisionResults, String quotienAsString, String dividend, String divisor) {
-        quotient = quotienAsString;
-        String[] arrayOfIntermediateDivisionResults = intermediateDivisionResults.split("nl");
+    public String print(String dividend, String divisor) throws DividendIsLessThanDivisorException, DivisorIsZeroException {
+        DivisionService service = new DivisionService();
+        String[] arrayOfIntermediateDivisionResults = service.divide(dividend, divisor).split("nl");
+        quotient = service.getQuotient();
         for (String i : arrayOfIntermediateDivisionResults) {
             result.append(i + "\n");
         }
