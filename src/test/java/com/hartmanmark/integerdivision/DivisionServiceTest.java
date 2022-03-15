@@ -1,7 +1,6 @@
 package com.hartmanmark.integerdivision;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,28 +32,15 @@ class DivisionServiceTest {
     }
 
     @Test
-    void divide_shouldGetIllegalArgumentException_whenInputStringContainsDivisorAsNull()
-            throws DividendIsLessThanDivisorException {
-        Throwable exception = assertThrows(NumberFormatException.class, () -> {
-            division.divide("10", null);
-        });
-        assertEquals("null", exception.getMessage());
-    }
-
-    @Test
-    void divide_shouldGetIllegalArgumentException_whenInputStringContainsDividendAsNull()
-            throws DividendIsLessThanDivisorException {
-        Throwable exception = assertThrows(NumberFormatException.class, () -> {
-            division.divide(null, "10");
-        });
-        assertEquals("null", exception.getMessage());
-    }
-
-    @Test
-    void divide_shouldGetIllegalArgumentException_whenInputStringContainDividendEqualToZero() {
-        Throwable exception = assertThrows(DivisorIsZeroException.class, () -> {
-            division.divide("10", "0");
-        });
-        assertEquals("Divisor cannot be 0, division by zero.\n" + "Your solution: Undefined", exception.getMessage());
+    void divide_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_123456789_3()
+            throws DividendIsLessThanDivisorException, DivisorIsZeroException {
+        assertEquals(
+                "_12nl 12nl --nl  _3nl   3nl   -nl  "
+                + " _4nl    3nl    -nl   _15nl    15nl  "
+                + "  --nl     _6nl      6nl      -nl     "
+                + " _7nl       6nl       -nl      _18nl     "
+                + "  18nl       --nl        _9nl         9nl    "
+                + "     -nl         0nl",
+                division.divide("123456789", "3"));
     }
 }

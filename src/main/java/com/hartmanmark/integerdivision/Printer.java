@@ -9,6 +9,8 @@ public class Printer {
     private String quotient;
 
     public String print(String dividend, String divisor) throws DividendIsLessThanDivisorException, DivisorIsZeroException {
+        DivisionValidator divisionValidator = new DivisionValidator();
+        divisionValidator.verify(dividend, divisor);
         DivisionService service = new DivisionService();
         String[] arrayOfIntermediateDivisionResults = service.divide(dividend, divisor).split("nl");
         quotient = service.getQuotient();

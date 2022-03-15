@@ -26,18 +26,11 @@ public class Main {
             if (!DivisionUtils.isNumeric(enteredDividend) || !DivisionUtils.isNumeric(enteredDivisor)) {
                 throw new IllegalArgumentException("The input have to me a number");
             }
-            if (enteredDividend.matches("\\d+") && enteredDivisor.matches("\\d+")) {
-                try {
-                    Printer print = new Printer();
-                    System.out.println("Your solution: " + "\n" + print.print(enteredDividend, enteredDivisor));
-                } catch (DividendIsLessThanDivisorException e) {
-                    System.out.println(e.getMessage());
-                } catch (DivisorIsZeroException e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (!enteredDividend.matches("\\d+") || !enteredDivisor.matches("\\d+")) {
-                System.out.println(
-                        "Incorrect input dividend or divisor. Input data must be number. Try again. For output write [exit]");
+            try {
+                Printer print = new Printer();
+                System.out.println("Your solution: " + "\n" + print.print(enteredDividend, enteredDivisor));
+            } catch (DividendIsLessThanDivisorException | DivisorIsZeroException e) {
+                System.out.println(e.getMessage());
             }
         }
     }

@@ -15,26 +15,12 @@ public class DivisionService {
         return integerDivide(enteredDividend, enteredDivisor);
     }
 
-    private void verify(Long dividend, Long divisor) throws DividendIsLessThanDivisorException, DivisorIsZeroException {
-        if (divisor == 0) {
-            throw new DivisorIsZeroException(
-                    "Divisor cannot be 0, division by zero." + "\n" + "Your solution: Undefined");
-        }
-        if (divisor == null || dividend == null) {
-            throw new IllegalArgumentException("null");
-        }
-        if (dividend < divisor) {
-            throw new DividendIsLessThanDivisorException("Your solution: " + dividend + " / " + divisor + " = 0");
-        }
-    }
-
     private String integerDivide(String enteredDividend, String enteredDivisor)
             throws DividendIsLessThanDivisorException, DivisorIsZeroException {
         long dividendAsLong = Long.parseLong(enteredDividend);
         long divisorAsLong = Long.parseLong(enteredDivisor);
         dividendAsLong = Math.abs(dividendAsLong);
         divisorAsLong = Math.abs(divisorAsLong);
-        verify(dividendAsLong, divisorAsLong);
         String[] arrayOfNumbersFromDividend = String.valueOf(dividendAsLong).split("");
         Long reminderNumber;
         long multiplyResult;

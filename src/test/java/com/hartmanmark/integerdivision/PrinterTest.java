@@ -18,7 +18,7 @@ class PrinterTest {
     }
 
     @Test
-    void divide_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_12345_13()
+    void print_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_12345_13()
             throws DividendIsLessThanDivisorException, DivisorIsZeroException {
         assertEquals("_12345│13\n"
                 + " 117  │---\n"
@@ -34,7 +34,7 @@ class PrinterTest {
     }
 
     @Test
-    void divide_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_123456789_3()
+    void print_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_123456789_3()
             throws DividendIsLessThanDivisorException, DivisorIsZeroException {
         assertEquals("_123456789│3\n"
                 + " 12       │--------\n"
@@ -65,7 +65,7 @@ class PrinterTest {
     }
 
     @Test
-    void divide_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_100000000000_333()
+    void print_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_100000000000_333()
             throws DividendIsLessThanDivisorException, DivisorIsZeroException {
         assertEquals("_100000000000│333\n"
                 + "  999        │---------\n"
@@ -81,7 +81,7 @@ class PrinterTest {
     }
 
     @Test
-    void divide_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_9223372036854775807_9223372036854775806()
+    void print_shouldPrintSolutionOnLongDividionwithoutCalculator_whenInputStringContains_9223372036854775807_9223372036854775806()
             throws DividendIsLessThanDivisorException, DivisorIsZeroException {
         assertEquals("_9223372036854775807│9223372036854775806\n"
                 + " 9223372036854775806│-\n"
