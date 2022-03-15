@@ -18,30 +18,29 @@ class DivisionValidatorTest {
         divisionValidator = new DivisionValidator();
     }
 
-  @Test
-  void divisionValidator_shouldDivisorIsZeroException_whenInputStringContainDividendEqualToZero() {
-      Throwable exception = assertThrows(DivisorIsZeroException.class, () -> {
-          divisionValidator.verify("10", "0");
-      });
-      assertEquals("Divisor cannot be 0, division by zero.\n" + "Your solution: Undefined", exception.getMessage());
-  }
+    @Test
+    void divisionValidator_shouldDivisorIsZeroException_whenInputStringContainDividendEqualToZero() {
+        Throwable exception = assertThrows(DivisorIsZeroException.class, () -> {
+            divisionValidator.verify("10", "0");
+        });
+        assertEquals("Divisor cannot be 0, division by zero.\n" + "Your solution: Undefined", exception.getMessage());
+    }
 
-  @Test
-  void divisionValidator_shouldGetNumberFormatException_whenInputStringContainsDividendAsNull()
-          throws DividendIsLessThanDivisorException {
-      Throwable exception = assertThrows(NumberFormatException.class, () -> {
-          divisionValidator.verify(null, "10");
-      });
-      assertEquals("null", exception.getMessage());
-  }
+    @Test
+    void divisionValidator_shouldGetNumberFormatException_whenInputStringContainsDividendAsNull()
+            throws DividendIsLessThanDivisorException {
+        Throwable exception = assertThrows(NumberFormatException.class, () -> {
+            divisionValidator.verify(null, "10");
+        });
+        assertEquals("null", exception.getMessage());
+    }
 
-  @Test
-  void divisionValidator_shouldGetNumberFormatException_whenInputStringContainsDivisorAsNull()
-          throws DividendIsLessThanDivisorException {
-      Throwable exception = assertThrows(NumberFormatException.class, () -> {
-          divisionValidator.verify("10", null);
-      });
-      assertEquals("null", exception.getMessage());
-  }
-
+    @Test
+    void divisionValidator_shouldGetNumberFormatException_whenInputStringContainsDivisorAsNull()
+            throws DividendIsLessThanDivisorException {
+        Throwable exception = assertThrows(NumberFormatException.class, () -> {
+            divisionValidator.verify("10", null);
+        });
+        assertEquals("null", exception.getMessage());
+    }
 }
