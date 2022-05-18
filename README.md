@@ -4,33 +4,7 @@ Write an application integer-division that divides numbers and prints result int
 
 Example of result:
 
-```bash
-
-_123456789│13
- 117      │-------
- ---      │9496676
-  _64
-   52
-   --
-  _125
-   117
-   ---
-    _86
-     78
-     --
-     _87
-      78
-      --
-      _98
-       91
-       --
-       _79
-        78
-        --
-         1
-         
-         
-         
+```
 _79845546843516845│33
  66               │----------------
  --               │2419562025561116
